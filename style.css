@@ -23,11 +23,6 @@ h1 {
     color: black;
 }
 
-input:focus, select:focus {
-    border-color: #684732;
-    color: #c4b17c;
-}
-
 .content {
     font-family: "ExocetL";
     margin: 0 auto;
@@ -48,6 +43,13 @@ input:focus, select:focus {
     font-size: 13pt;
     font-weight: 900;
 }
+
+input:focus, select:focus {
+    outline-width: 0;
+    border-color: #684732;
+    color: #c4b17c;
+}
+
 .title {
     text-align: left;
     width: 75%;

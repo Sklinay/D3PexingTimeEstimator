@@ -121,9 +121,9 @@ function formatTime(seconds, formatForValue) {
         if(days > 0) 
             result += days + " day" + (days>1?"s ":" ");
         if(hours > 0)
-            result += hours + " hour" + (hours>1?"s ":" ");
-        if(minutes > 0)
-            result += "and " + minutes + " minute" + (minutes>1?"s":"");
+            result += hours + " hour" + (hours>1?"s":"") + " and ";
+
+        result += minutes + " minute" + (minutes>1?"s":"");
         return (result==""?"Too Few Time":result);
     }
     else {
