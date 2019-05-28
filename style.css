@@ -74,6 +74,9 @@ input:focus, select:focus {
     width: 80px;
 }
 
+#averageElite {
+    width: 30px;
+}
 
 #compute {
     font-size: 30pt;
@@ -105,7 +108,7 @@ input:focus, select:focus {
     cursor: pointer;
 }
 
-#hintTimeBox {
+.box {
     position: absolute;
     display: none;
     font-family: "ExocetL";

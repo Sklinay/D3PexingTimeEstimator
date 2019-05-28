@@ -1,9 +1,18 @@
 <!DOCTYPE html>
 <html>
-
 <head>
     <title>
+        Diablo 3 - Pexing Time Estimator
     </title>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-141016374-1"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() {
+            dataLayer.push(arguments);
+        }
+        gtag('js', new Date());
+        gtag('config', 'UA-141016374-1');
+    </script>
     <link rel="stylesheet" type="text/css" href="style.css" media="screen" />
     <script src="https://code.jquery.com/jquery-latest.min.js"></script>
     <script src="function.js"></script>
@@ -11,19 +20,17 @@
 
 <body>
     <div class="content">
-        <h1>Diablo 3 - Pexing time calculator</h1>
+        <h1>Diablo 3 - Pexing Time Estimator</h1>
         <hr/>
-       <div class="title">Parangon</div>
-        <p class="p">             
-             Current <input type="number" id="currentPara" value="0" min="0" step="1" />&nbsp;&nbsp;&nbsp;&nbsp;Goal  <input type="number" id="goalPara" min="0" step="1" value="1000" />
+        <div class="title">Parangon</div>
+        <p class="p">
+            Current <input type="number" id="currentPara" value="0" min="0" step="1" />&nbsp;&nbsp;&nbsp;&nbsp;Goal <input type="number" id="goalPara" min="0" step="1" value="1000" />
         </p>
         <div class="title">Farming</div>
         <p class="p">
             GR level
-            <input type="number" id="grLevel" min="0" value="90" /> 
-            in
-            <input id="timeRift" type="time" step="1" value="00:02:30" /><span id="hintTime">?</span>
-            with
+            <input type="number" id="grLevel" min="0" value="90" /> in
+            <input id="timeRift" type="time" step="1" value="00:02:30" /> <span id="hintTime">?</span> with
             <select id="numberPlayer">
                 <option value="1" selected>1</option>
                 <option value="2">2</option>
@@ -33,8 +40,7 @@
         </p>
         <div class="title">XP Pool</div>
         <p class="p">
-            <input type="checkbox" id="poolClosing"/><label for="poolClosing">Closing Rift</label>
-            &nbsp;&nbsp;&nbsp;&nbsp;
+            <input type="checkbox" id="poolClosing" /><label for="poolClosing">Closing Rift</label> &nbsp;&nbsp;&nbsp;&nbsp;
             <input type="checkbox" id="poolMonster" /><label for="poolMonster">Monster</label>
         </p>
         <div class="title">Bonus Xp From item</div>
@@ -45,24 +51,23 @@
         <p class="p">
             <input type="checkbox" id="xpFromMonster" checked/><label for="xpFromMonster">Approximate xp from monsters</label>
         </p>
-        <input type="button" value="Compute" id="compute"/>
+        <input type="button" value="Compute" id="compute" />
         <div id="result">
             <hr/>
             <p>With an average of <span class="highlightResult" id="resultXp">xxxxxx</span> experience points in GR <span class="highlightResult" id="resultGR">xx</span>, for upping from parangon <span class="highlightResult" id="resultCurrentPara">xx</span> to parangon <span class="highlightResult" id="resultGoalPara">xx</span> you will need :</p>
             <div id="resultTime">XXhXX:XX</div>
             <div id="resultNbGR">(that means xxx GR)</div>
         </div>
-    </div>  
+    </div>
     <div id="closeFrame"></div>
-    <div id="hintTimeBox">
+    <div class="box" id="hintTimeBox">
         <p>
-        To get more accurate results, computing average time is better :<br/>
+            To get more accurate results, computing average time is better :<br/>
         </p>
         Completing
-        <input type="number" id="hintAmountGR" value="0" />  GR in <input id="hintTimeGR" type="time" step="1" value="00:00:00" /><br/>
+        <input type="number" id="hintAmountGR" value="0" /> GR in <input id="hintTimeGR" type="time" step="1" value="00:00:00" /><br/>
         <input type="button" id="validateHint" value="Validate" />
     </div>
-    
 </body>
 
 </html>
