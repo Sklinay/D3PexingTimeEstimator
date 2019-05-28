@@ -85,6 +85,7 @@ input:focus, select:focus {
 }
 
 #result {
+    display: none;
     font-size: 16pt;
 }
 

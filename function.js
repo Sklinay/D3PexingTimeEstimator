@@ -213,13 +213,14 @@ $(document).ready(function () {
     });
 
     $('#compute').on("click", function (e) {
+        $('#result').show();
         var currentPara = parseInt($('#currentPara').val());
         var goalPara = parseInt($('#goalPara').val());
         var grLevel = parseInt($('#grLevel').val());
         var timeRift = parseTime($('#timeRift').val());
         var numberPlayer = parseInt($('#numberPlayer').val());
         var bonusXp = parseInt($('#bonusXp').val())/100;
-        //addBonusXp(xp, poolMonster, poolClosing, itemBonusXp, nbPlayer) 
+        
         var xpFromGR = addBonusXp(computeBaseXpReward(grLevel, true, 9), $('#poolClosing').is(":checked"), $('#poolMonster').is(":checked"), bonusXp, numberPlayer);
         var averageXpFromGR = xpFromGR.closing + ($('#xpFromMonster').is(":checked")?xpFromGR.monster:0);
         var needXp = sumPara(currentPara,goalPara);
