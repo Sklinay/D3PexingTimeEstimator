@@ -121,9 +121,9 @@ function formatTime(seconds, formatForValue) {
         if (days > 0)
             result += days + " day" + (days > 1 ? "s " : " ");
         if (hours > 0)
-            result += hours + " hour" + (hours > 1 ? "s" : "") + " and ";
+            result += hours + " hour" + (hours > 1 ? "s" : "");
 
-        result += minutes + " minute" + (minutes > 1 ? "s" : "");
+        result += " and " + minutes + " minute" + (minutes > 1 ? "s" : "");
         return (result == "" ? "Too Few Time" : result);
     } else {
         return (hours.toString().length == 1 ? "0" : "") + hours + ":" + (minutes.toString().length == 1 ? "0" : "") + minutes + ":" + (seconds.toString().length == 1 ? "0" : "") + seconds;
