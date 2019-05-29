@@ -223,6 +223,7 @@ $(document).ready(function () {
         
         var xpFromGR = addBonusXp(computeBaseXpReward(grLevel, true, 9), $('#poolClosing').is(":checked"), $('#poolMonster').is(":checked"), bonusXp, numberPlayer);
         var averageXpFromGR = xpFromGR.closing + ($('#xpFromMonster').is(":checked")?xpFromGR.monster:0);
+        var xpHour = averageXpFromGR / timeRift * 3600;
         var needXp = sumPara(currentPara,goalPara);
         var grNeeded = Math.ceil(needXp / (averageXpFromGR));
         var totalTime = formatTime(timeRift * grNeeded);
@@ -232,7 +233,8 @@ $(document).ready(function () {
         $('#resultCurrentPara').text(currentPara);
         $('#resultGoalPara').text(goalPara);
         $('#resultTime').text(totalTime);
-        $('#resultNbGR').text("(That means "+ grNeeded +" GR)");
+        $('#resultNbGR').text(grNeeded);
+        $('#resultXpHour').text(Math.round(xpHour).toLocaleString());
     });
 
 });
