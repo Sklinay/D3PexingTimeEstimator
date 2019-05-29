@@ -116,26 +116,52 @@ function formatTime(seconds, formatForValue) {
     seconds -= minutes * 60;
     seconds = Math.trunc(seconds);
 
-    if (!formatForValue){
+    if (!formatForValue) {
         var result = "";
-        if(days > 0) 
-            result += days + " day" + (days>1?"s ":" ");
-        if(hours > 0)
-            result += hours + " hour" + (hours>1?"s":"") + " and ";
+        if (days > 0)
+            result += days + " day" + (days > 1 ? "s " : " ");
+        if (hours > 0)
+            result += hours + " hour" + (hours > 1 ? "s" : "") + " and ";
 
-        result += minutes + " minute" + (minutes>1?"s":"");
-        return (result==""?"Too Few Time":result);
-    }
-    else {
+        result += minutes + " minute" + (minutes > 1 ? "s" : "");
+        return (result == "" ? "Too Few Time" : result);
+    } else {
         return (hours.toString().length == 1 ? "0" : "") + hours + ":" + (minutes.toString().length == 1 ? "0" : "") + minutes + ":" + (seconds.toString().length == 1 ? "0" : "") + seconds;
     }
 }
 
 $(document).ready(function () {
+    var showToolTipXp = false;
+    $('#resultXp').on("mouseenter", function (e) {
+        if (showToolTipXp) {
+            $('#xpDetailTooltip').css({
+                left: e.pageX + 10,
+                top: e.pageY + 10
+            });
+            $('#xpDetailTooltip').show();
+        }
+    });
+
+    $('#resultXp').on("mousemove", function (e) {
+        if (showToolTipXp) {
+            $('#xpDetailTooltip').css({
+                left: e.pageX + 10,
+                top: e.pageY + 10
+            });
+        }
+    });
+
+    $('#resultXp').on("mouseleave", function (e) {
+        if (showToolTipXp) {
+            $('#xpDetailTooltip').hide();
+        }
+    });
+
+
     $('#hintTime').on("click", function (e) {
         $('#hintTimeBox').css({
-            left: e.clientX,
-            top: e.clientY
+            left: e.pageX,
+            top: e.pageY
         });
         $('#closeFrame').show();
         $('#hintTimeBox').show();
@@ -219,15 +245,15 @@ $(document).ready(function () {
         var grLevel = parseInt($('#grLevel').val());
         var timeRift = parseTime($('#timeRift').val());
         var numberPlayer = parseInt($('#numberPlayer').val());
-        var bonusXp = parseInt($('#bonusXp').val())/100;
-        
+        var bonusXp = parseInt($('#bonusXp').val()) / 100;
+
         var xpFromGR = addBonusXp(computeBaseXpReward(grLevel, true, 9), $('#poolClosing').is(":checked"), $('#poolMonster').is(":checked"), bonusXp, numberPlayer);
-        var averageXpFromGR = xpFromGR.closing + ($('#xpFromMonster').is(":checked")?xpFromGR.monster:0);
+        var averageXpFromGR = xpFromGR.closing + ($('#xpFromMonster').is(":checked") ? xpFromGR.monster : 0);
         var xpHour = averageXpFromGR / timeRift * 3600;
-        var needXp = sumPara(currentPara,goalPara);
+        var needXp = sumPara(currentPara, goalPara);
         var grNeeded = Math.ceil(needXp / (averageXpFromGR));
         var totalTime = formatTime(timeRift * grNeeded);
-        
+
         $('#resultXp').text(Math.round(averageXpFromGR).toLocaleString());
         $('#resultGR').text(grLevel);
         $('#resultCurrentPara').text(currentPara);
@@ -235,6 +261,14 @@ $(document).ready(function () {
         $('#resultTime').text(totalTime);
         $('#resultNbGR').text(grNeeded);
         $('#resultXpHour').text(Math.round(xpHour).toLocaleString());
+
+        showToolTipXp = $('#xpFromMonster').is(":checked");
+        if (showToolTipXp) {
+            $('#resultXp').addClass("underlined");
+            $('#resultXpClosing').text(Math.round(xpFromGR.closing).toLocaleString());
+            $('#resulXpMonster').text(Math.round(xpFromGR.monster).toLocaleString());
+        } else 
+            $('#resultXp').removeClass("underlined");
     });
 
 });

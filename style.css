@@ -96,6 +96,12 @@ input:focus, select:focus {
     color: red;
 }
 
+.underlined {
+    text-decoration: underline;
+}
+
+
+
 #resultTime {
     font-family: "ExocetH";
     font-size: 30pt;
@@ -105,7 +111,6 @@ input:focus, select:focus {
 #hintTime {
     text-decoration: underline;
     color: #6e6b67;
-    cursor: pointer;
 }
 
 .box {
@@ -119,6 +124,17 @@ input:focus, select:focus {
     font-size: 10pt;
     max-width: 400px;
     box-shadow: 0px 0px 20px rgba(255,255,255,.1);
+}
+
+.tooltip {
+    display: none;
+    position: absolute;
+    margin: 0px;
+    padding: 2px;
+    border: 1px solid rgba(255,255,255,0.2);
+    border-radius: 5px;
+    background-color: #2b2926;
+     box-shadow: 0px 0px 20px rgba(255,255,255,.1);
 }
 
 #hintAmountGR {
