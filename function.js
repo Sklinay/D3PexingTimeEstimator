@@ -32,11 +32,11 @@ function xpForNext(curLvl) {
     else if (curLvl == 2250)
         return 200981922000;
     else if (curLvl >= 2251) {
-		var xp = 200981922000;
-		for (var i = curLvl - 2250; i > 0; i--)
-			xp += 229602000 + 102000 * (i);		
+	var xp = 200981922000;
+	for (var i = curLvl - 2250; i > 0; i--)
+	    xp += 229602000 + 102000 * (i);		
         return xp;
-	}
+    }
 }
 
 function sumPara(currLvl, goalLvl) {
